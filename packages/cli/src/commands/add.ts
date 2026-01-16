@@ -5,7 +5,7 @@ import prompts from 'prompts';
 import fs from 'fs-extra';
 import path from 'path';
 
-const REGISTRY_BASE_URL = 'https://raw.githubusercontent.com/matthewnaples/grove-kit/main/packages/registry/registry';
+const REGISTRY_BASE_URL = 'https://raw.githubusercontent.com/matthewnaples/the-grove/main/packages/registry/registry';
 
 interface AddOptions {
   path?: string;
@@ -15,8 +15,8 @@ interface AddOptions {
 export async function add(components: string[], options: AddOptions) {
   if (!components || components.length === 0) {
     console.log(chalk.yellow('No components specified.'));
-    console.log('Usage: npx grove-kit add <component-name>');
-    console.log('\nRun `npx grove-kit list` to see available components.');
+    console.log('Usage: npx the-grove add <component-name>');
+    console.log('\nRun `npx the-grove list` to see available components.');
     return;
   }
 

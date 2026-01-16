@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 
-const REGISTRY_BASE_URL = 'https://raw.githubusercontent.com/matthewnaples/grove-kit/main/packages/registry/registry';
+const REGISTRY_BASE_URL = 'https://raw.githubusercontent.com/matthewnaples/the-grove/main/packages/registry/registry';
 
 interface ListOptions {
   category?: string;
@@ -39,7 +39,7 @@ export async function list(options: ListOptions) {
     }
   }
 
-  console.log(chalk.gray('\nRun `npx grove-kit add <component>` to install\n'));
+  console.log(chalk.gray('\nRun `npx the-grove add <component>` to install\n'));
 }
 
 async function fetchCategoryComponents(category: string) {

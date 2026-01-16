@@ -23,9 +23,9 @@ export function extractImports(code: string): {
       ImportDeclaration(path: any) {
         const source = path.node.source.value;
 
-        // Registry dependencies (from @grove-kit/components or @/components)
+        // Registry dependencies (from @the-grove/components or @/components)
         if (
-          source.startsWith('@grove-kit/components/') ||
+          source.startsWith('@the-grove/components/') ||
           source.startsWith('@/components/')
         ) {
           const parts = source.split('/');

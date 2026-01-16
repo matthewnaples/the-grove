@@ -1,10 +1,10 @@
 <div align="center">
 
-![grove-kit](.github/assets/header.png)
+![the-grove](.github/assets/header.png)
 
-# grove-kit
+# the-grove
 
-*Like a grove where carefully tended trees grow in harmony, grove-kit cultivates a collection of thoughtfully crafted components. Each one nurtured, tested, and ready to flourish in your Next.js garden. Plant them with a single command, watch them bloom.*
+*Like a grove where carefully tended trees grow in harmony, the-grove cultivates a collection of thoughtfully crafted components. Each one nurtured, tested, and ready to flourish in your Next.js garden. Plant them with a single command, watch them bloom.*
 
 </div>
 
@@ -14,20 +14,20 @@
 
 Install components:
 ```bash
-npx grove-kit add async-button
+npx the-grove add async-button
 ```
 
 List available components:
 ```bash
-npx grove-kit list
+npx the-grove list
 ```
 
 ## Packages
 
-- `@grove-kit/cli` - CLI tool (published to npm)
-- `@grove-kit/components` - Component library (published to npm)
-- `@grove-kit/registry` - Registry generator (internal)
-- `@grove-kit/playground` - Development playground (internal)
+- `@the-grove/cli` - CLI tool (published to npm)
+- `@the-grove/components` - Component library (published to npm)
+- `@the-grove/registry` - Registry generator (internal)
+- `@the-grove/playground` - Development playground (internal)
 
 ## Development
 
@@ -51,13 +51,13 @@ npm run validate:registry
 ## Contributing Components
 
 ```bash
-npx grove-kit contribute ./components/my-component.tsx
+npx the-grove contribute ./components/my-component.tsx
 ```
 
 ## Project Structure
 
 ```
-grove-kit/
+the-grove/
 ├── packages/
 │   ├── components/    # React components
 │   ├── cli/          # CLI tool

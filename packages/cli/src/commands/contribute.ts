@@ -7,7 +7,7 @@ import chalk from 'chalk';
 
 const TEMPLATE_REPO = {
   owner: 'matthewnaples',
-  repo: 'grove-kit',
+  repo: 'the-grove',
   branch: 'main',
 };
 
@@ -177,5 +177,5 @@ ${files.map(f => `- ${f.localPath}`).join('\n')}
 \`${answers.changeType}\`
 
 ---
-*Contributed via \`npx grove-kit contribute\`*`;
+*Contributed via \`npx the-grove contribute\`*`;
 }

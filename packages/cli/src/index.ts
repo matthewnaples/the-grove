@@ -8,7 +8,7 @@ import { list } from './commands/list';
 const program = new Command();
 
 program
-  .name('grove-kit')
+  .name('the-grove')
   .description('Component library CLI for managing UI components')
   .version('0.1.0');
 

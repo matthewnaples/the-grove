@@ -1,4 +1,4 @@
-# @grove-kit/components
+# @the-grove/components
 
 React component library for Next.js projects.
 
@@ -6,12 +6,12 @@ React component library for Next.js projects.
 
 Via CLI (recommended):
 ```bash
-npx grove-kit add async-button
+npx the-grove add async-button
 ```
 
 Via npm:
 ```bash
-npm install @grove-kit/components
+npm install @the-grove/components
 ```
 
 ## Components
@@ -31,7 +31,7 @@ npm install @grove-kit/components
 ## Usage
 
 ```tsx
-import { AsyncButton } from '@grove-kit/components';
+import { AsyncButton } from '@the-grove/components';
 
 export default function MyComponent() {
   return (

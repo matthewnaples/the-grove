@@ -1,22 +1,22 @@
-# @grove-kit/cli
+# @the-grove/cli
 
-CLI tool for grove-kit component library.
+CLI tool for the-grove component library.
 
 ## Usage
 
 ### Add components
 ```bash
-npx grove-kit add async-button
+npx the-grove add async-button
 ```
 
 ### List components
 ```bash
-npx grove-kit list
+npx the-grove list
 ```
 
 ### Contribute components
 ```bash
-npx grove-kit contribute ./components/my-component.tsx
+npx the-grove contribute ./components/my-component.tsx
 ```
 
 ## Commands
@@ -26,7 +26,7 @@ npx grove-kit contribute ./components/my-component.tsx
 Add components to your project.
 
 ```bash
-npx grove-kit add <component-name> [options]
+npx the-grove add <component-name> [options]
 
 Options:
   -p, --path <path>  Custom installation path
@@ -38,7 +38,7 @@ Options:
 List all available components.
 
 ```bash
-npx grove-kit list [options]
+npx the-grove list [options]
 
 Options:
   -c, --category <category>  Filter by category
@@ -47,10 +47,10 @@ Options:
 
 ### contribute
 
-Contribute components back to grove-kit.
+Contribute components back to the-grove.
 
 ```bash
-npx grove-kit contribute <file...>
+npx the-grove contribute <file...>
 ```
 
 Requires GITHUB_TOKEN environment variable or will prompt for token.
@@ -66,5 +66,5 @@ npm run dev
 
 # Test locally
 npm link
-grove-kit --help
+the-grove --help
 ```

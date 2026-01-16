@@ -1,5 +1,5 @@
 {
-  "name": "grove-kit",
+  "name": "the-grove",
   "version": "0.1.0",
   "private": true,
   "packageManager": "npm@10.2.4",
@@ -9,10 +9,10 @@
   ],
   "scripts": {
     "dev": "turbo run dev",
-    "dev:playground": "turbo run dev --filter=@grove-kit/playground",
+    "dev:playground": "turbo run dev --filter=@the-grove/playground",
     "build": "turbo run build",
-    "generate:registry": "turbo run generate --filter=@grove-kit/registry",
-    "validate:registry": "turbo run validate --filter=@grove-kit/registry"
+    "generate:registry": "turbo run generate --filter=@the-grove/registry",
+    "validate:registry": "turbo run validate --filter=@the-grove/registry"
   },
   "devDependencies": {
     "turbo": "^2.0.0",
