@@ -1,0 +1,23 @@
+{
+  "name": "grove-kit",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "npm@10.2.4",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "dev:playground": "turbo run dev --filter=@grove-kit/playground",
+    "build": "turbo run build",
+    "generate:registry": "turbo run generate --filter=@grove-kit/registry",
+    "validate:registry": "turbo run validate --filter=@grove-kit/registry"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0",
+    "typescript": "^5.0.0",
+    "tsx": "^4.0.0",
+    "@types/node": "^20.0.0"
+  }
+}

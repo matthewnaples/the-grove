@@ -1,0 +1,15 @@
+{
+  "name": "async-button",
+  "type": "registry:ui",
+  "category": "core",
+  "description": "",
+  "tags": [],
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "core/async-button/index.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}
