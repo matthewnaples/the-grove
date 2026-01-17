@@ -39,26 +39,17 @@ echo "📝 Generating registry..."
 npm run generate:registry
 
 echo ""
-echo "✅ Publishing @the-grove/cli..."
+echo "🔄 Bumping versions..."
 cd packages/cli
 NEW_VERSION=$(npm version $BUMP_TYPE --no-git-tag-version 2>&1 | grep -o 'v[0-9]*\.[0-9]*\.[0-9]*' | sed 's/v//')
-echo "New CLI version: $NEW_VERSION"
-eval $PUBLISH_CMD
+echo "New version: $NEW_VERSION"
 
-echo ""
-echo "🔄 Updating wrapper dependency to @the-grove/cli@^$NEW_VERSION..."
 cd ../the-grove
-
 # Update the dependency version in package.json
 sed -i.bak "s/\"@the-grove\/cli\": \".*\"/\"@the-grove\/cli\": \"^$NEW_VERSION\"/" package.json
 rm package.json.bak
-
 # Bump wrapper to same version
 npm version $NEW_VERSION --no-git-tag-version --allow-same-version
-
-echo ""
-echo "✅ Publishing the-grove wrapper..."
-eval $PUBLISH_CMD
 
 echo ""
 echo "📤 Committing and pushing to GitHub..."
@@ -68,6 +59,21 @@ git commit -m "chore: publish v$NEW_VERSION"
 git tag "v$NEW_VERSION"
 git push origin main
 git push origin "v$NEW_VERSION"
+
+echo ""
+echo "⏳ Waiting for GitHub to update (5 seconds)..."
+sleep 5
+
+echo ""
+echo "✅ Publishing @the-grove/cli..."
+cd packages/cli
+eval $PUBLISH_CMD
+
+echo ""
+echo "✅ Publishing the-grove wrapper..."
+cd ../the-grove
+eval $PUBLISH_CMD
+cd ../..
 
 echo ""
 echo "🎉 Successfully published v$NEW_VERSION!"

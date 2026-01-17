@@ -5,8 +5,10 @@ export interface RegistryFile {
 }
 
 export interface RegistryEntry {
+  $schema?: string;
   name: string;
   type: 'registry:ui' | 'registry:page' | 'registry:block';
+  title?: string;
   category: 'core' | 'convex' | 'clerk' | 'convex-clerk';
   description?: string;
   tags?: string[];

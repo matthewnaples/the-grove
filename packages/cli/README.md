@@ -19,6 +19,27 @@ npx the-grove list
 npx the-grove contribute ./components/my-component.tsx
 ```
 
+## Shadcn Compatibility
+
+the-grove registry is fully compatible with shadcn's CLI! You can use either:
+
+**the-grove CLI** (recommended for ease of use):
+```bash
+npx the-grove add async-button
+```
+
+**shadcn CLI** (if you prefer):
+```bash
+npx shadcn@latest add https://raw.githubusercontent.com/matthewnaples/the-grove/main/packages/registry/registry/core/async-button.json
+```
+
+### Why Use the-grove CLI?
+
+- Automatic component discovery (no need to know category)
+- Stack detection (warns about missing Convex/Clerk dependencies)
+- Browse components with `the-grove list`
+- Same reliable installation (uses shadcn under the hood)
+
 ## Commands
 
 ### add

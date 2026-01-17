@@ -12,6 +12,13 @@ const __dirname = dirname(__filename);
 const COMPONENTS_DIR = path.resolve(__dirname, '../../components/src');
 const REGISTRY_DIR = path.resolve(__dirname, '../registry');
 
+function toTitleCase(str: string): string {
+  return str
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
+
 async function generateRegistry() {
   console.log('🔨 Generating registry...\n');
 
@@ -58,8 +65,10 @@ async function generateRegistry() {
     }
 
     const registryEntry: RegistryEntry = {
+      $schema: 'https://ui.shadcn.com/schema/registry-item.json',
       name: componentName,
       type: 'registry:ui',
+      title: toTitleCase(componentName),
       category,
       description: '',
       tags: [],

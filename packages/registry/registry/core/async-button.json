@@ -1,6 +1,8 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "async-button",
   "type": "registry:ui",
+  "title": "Async Button",
   "category": "core",
   "description": "",
   "tags": [],

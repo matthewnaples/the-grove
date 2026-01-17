@@ -23,6 +23,48 @@ List available components:
 npx the-grove list
 ```
 
+## Installation Methods
+
+### Method 1: Using the-grove CLI (Recommended)
+
+Easiest way with automatic component discovery:
+
+```bash
+npx the-grove add async-button
+```
+
+The CLI will:
+- Find the component across all categories
+- Warn about missing dependencies (Convex, Clerk, etc.)
+- Use shadcn to install with proper overwrite protection
+
+### Method 2: Using shadcn CLI Directly
+
+If you prefer using shadcn directly:
+
+```bash
+npx shadcn@latest add https://raw.githubusercontent.com/matthewnaples/the-grove/main/packages/registry/registry/core/async-button.json
+```
+
+**Note:** You'll need to know the component's category (core, convex, clerk, convex-clerk).
+
+### Method 3: Via components.json (Future)
+
+Coming soon: Add the-grove as a registry in your `components.json`:
+
+```json
+{
+  "registries": {
+    "@grove": "https://raw.githubusercontent.com/matthewnaples/the-grove/main/packages/registry/registry"
+  }
+}
+```
+
+Then install with:
+```bash
+npx shadcn@latest add @grove/async-button
+```
+
 ## Packages
 
 - `@the-grove/cli` - CLI tool (published to npm)

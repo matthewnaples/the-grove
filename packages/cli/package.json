@@ -1,6 +1,6 @@
 {
   "name": "@the-grove/cli",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "type": "module",
   "description": "CLI for the-grove component library",
   "bin": {

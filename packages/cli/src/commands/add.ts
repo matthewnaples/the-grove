@@ -59,8 +59,19 @@ export async function add(components: string[], options: AddOptions) {
         spinner.start(`Adding ${componentName}...`);
       }
 
-      // Download and install component files
-      await installComponent(registryEntry, options.path || 'components/ui');
+      // Use shadcn CLI to install
+      spinner.text = `Installing ${componentName} via shadcn...`;
+
+      const args = ['shadcn@latest', 'add', registryUrl];
+
+      if (options.yes) {
+        args.push('--yes');
+      }
+      if (options.path) {
+        args.push('--path', options.path);
+      }
+
+      await execa('npx', args, { stdio: 'inherit' });
 
       spinner.succeed(`Added ${componentName}`);
     }
@@ -138,27 +149,3 @@ async function checkDependencies(registryEntry: any, stack: any): Promise<string
   return missing;
 }
 
-async function installComponent(registryEntry: any, targetPath: string) {
-  const cwd = process.cwd();
-
-  // Install npm dependencies if needed
-  if (registryEntry.dependencies && registryEntry.dependencies.length > 0) {
-    console.log(chalk.gray(`Installing dependencies: ${registryEntry.dependencies.join(', ')}`));
-    await execa('npm', ['install', ...registryEntry.dependencies], { cwd, stdio: 'inherit' });
-  }
-
-  // Write component files
-  for (const file of registryEntry.files) {
-    // Respect the file path from registry (e.g., lib/utils.ts or components/ui/button.tsx)
-    const filePath = path.join(cwd, file.path);
-    const dir = path.dirname(filePath);
-
-    // Ensure directory exists
-    await fs.ensureDir(dir);
-
-    // Write file content
-    await fs.writeFile(filePath, file.content, 'utf-8');
-
-    console.log(chalk.gray(`  Created ${path.relative(cwd, filePath)}`));
-  }
-}
