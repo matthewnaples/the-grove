@@ -149,7 +149,8 @@ async function installComponent(registryEntry: any, targetPath: string) {
 
   // Write component files
   for (const file of registryEntry.files) {
-    const filePath = path.join(cwd, targetPath, path.basename(file.path));
+    // Respect the file path from registry (e.g., lib/utils.ts or components/ui/button.tsx)
+    const filePath = path.join(cwd, file.path);
     const dir = path.dirname(filePath);
 
     // Ensure directory exists

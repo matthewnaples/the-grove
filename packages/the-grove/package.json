@@ -1,6 +1,6 @@
 {
   "name": "the-grove",
-  "version": "0.1.1",
+  "version": "0.1.5",
   "description": "CLI for the-grove component library (wrapper package)",
   "main": "index.js",
   "bin": {
@@ -11,7 +11,7 @@
   ],
   "scripts": {},
   "dependencies": {
-    "@the-grove/cli": "^0.1.0"
+    "@the-grove/cli": "^0.1.5"
   },
   "keywords": [
     "the-grove",

@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { glob } from 'glob';
-import type { RegistryEntry } from './types.js';
+import type { RegistryEntry, RegistryFile } from './types.js';
 import { extractImports, getComponentCategory, getRelativePath } from './utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -35,6 +35,28 @@ async function generateRegistry() {
 
     const { registryDeps, npmDeps } = extractImports(content);
 
+    // Check if component uses cn utility
+    const usesCn = content.includes('from \'@/lib/utils\'') || content.includes('from "@/lib/utils"');
+
+    const files: RegistryFile[] = [
+      {
+        path: `components/ui/${componentName}.tsx`,
+        content: content,
+        type: 'registry:ui',
+      },
+    ];
+
+    // Add utils.ts if component uses cn
+    if (usesCn) {
+      const utilsPath = path.join(COMPONENTS_DIR, 'lib/utils.ts');
+      const utilsContent = await fs.readFile(utilsPath, 'utf-8');
+      files.push({
+        path: 'lib/utils.ts',
+        content: utilsContent,
+        type: 'registry:ui',
+      });
+    }
+
     const registryEntry: RegistryEntry = {
       name: componentName,
       type: 'registry:ui',
@@ -43,13 +65,7 @@ async function generateRegistry() {
       tags: [],
       registryDependencies: registryDeps,
       dependencies: npmDeps,
-      files: [
-        {
-          path: `components/ui/${componentName}.tsx`,
-          content: content,
-          type: 'registry:ui',
-        },
-      ],
+      files,
     };
 
     const outputPath = path.join(REGISTRY_DIR, category, `${componentName}.json`);
