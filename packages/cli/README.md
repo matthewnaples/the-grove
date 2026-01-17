@@ -78,14 +78,60 @@ Requires GITHUB_TOKEN environment variable or will prompt for token.
 
 ## Development
 
+### Local Testing (Recommended)
+
+From the repository root:
+
 ```bash
+# Setup local development environment
+npm run dev:link
+
+# Test the CLI
+the-grove add async-button
+the-grove list
+
+# Watch for changes (in separate terminal)
+cd packages/cli
+npm run dev
+
+# Cleanup when done
+cd ../..
+npm run dev:unlink
+```
+
+### Manual Linking
+
+If you prefer to link manually:
+
+```bash
+cd packages/cli
+
 # Build
 npm run build
 
-# Watch mode
-npm run dev
-
-# Test locally
+# Link globally
 npm link
+
+# Test
 the-grove --help
+
+# Unlink when done
+npm unlink -g @the-grove/cli
 ```
+
+### Quick Testing Without Linking
+
+```bash
+# From repository root
+./scripts/test-local.sh add async-button
+```
+
+### Watch Mode
+
+For active development with auto-rebuild on file changes:
+
+```bash
+npm run dev
+```
+
+This runs tsup in watch mode - any changes to source files will automatically rebuild the dist folder.

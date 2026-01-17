@@ -72,20 +72,75 @@ npx shadcn@latest add @grove/async-button
 - `@the-grove/registry` - Registry generator (internal)
 - `@the-grove/playground` - Development playground (internal)
 
-## Development
+## Local Development
+
+### Quick Start
+
+1. **Clone and install:**
+   ```bash
+   git clone https://github.com/matthewnaples/the-grove.git
+   cd the-grove
+   npm install
+   ```
+
+2. **Link for local testing:**
+   ```bash
+   npm run dev:link
+   ```
+
+3. **Test your changes:**
+   ```bash
+   the-grove add async-button
+   the-grove list
+   ```
+
+4. **Watch mode (optional):**
+   In a separate terminal, run:
+   ```bash
+   cd packages/cli
+   npm run dev
+   ```
+
+   Now any changes to the CLI source will automatically rebuild.
+
+5. **Unlink when done:**
+   ```bash
+   npm run dev:unlink
+   ```
+
+### Development Workflow
+
+#### Making CLI Changes
+
+1. Edit files in `packages/cli/src/`
+2. If you're not in watch mode, rebuild: `cd packages/cli && npm run build`
+3. Test immediately: `the-grove <your-command>`
+4. Iterate quickly without publishing!
+
+#### Making Registry Changes
+
+1. Edit components in `packages/components/src/`
+2. Regenerate registry: `npm run generate:registry`
+3. Test with your local CLI: `the-grove add <component>`
+
+#### Quick Test Script
+
+For rapid testing without linking globally:
 
 ```bash
-# Install dependencies
-npm install
+# Test a command directly
+./scripts/test-local.sh add async-button
+./scripts/test-local.sh list
+```
 
+### Other Development Commands
+
+```bash
 # Run playground
 npm run dev:playground
 
 # Build all packages
 npm run build
-
-# Generate registry
-npm run generate:registry
 
 # Validate registry
 npm run validate:registry

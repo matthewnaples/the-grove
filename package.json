@@ -10,6 +10,8 @@
   "scripts": {
     "dev": "turbo run dev",
     "dev:playground": "turbo run dev --filter=@the-grove/playground",
+    "dev:link": "./scripts/dev-link.sh",
+    "dev:unlink": "./scripts/dev-unlink.sh",
     "build": "turbo run build",
     "generate:registry": "turbo run generate --filter=@the-grove/registry",
     "validate:registry": "turbo run validate --filter=@the-grove/registry",
