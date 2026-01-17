@@ -43,8 +43,6 @@ export async function list(options: ListOptions) {
 }
 
 async function fetchCategoryComponents(category: string) {
-  // In a real implementation, you'd fetch an index.json that lists all components
-  // For now, we'll return a placeholder
   const indexUrl = `${REGISTRY_BASE_URL}/${category}/index.json`;
 
   try {
