@@ -12,7 +12,11 @@
     "title": "Async Button",
     "description": "",
     "tags": [],
-    "dependencies": [],
-    "registryDependencies": []
+    "dependencies": [
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "button"
+    ]
   }
 ]
