@@ -123,6 +123,23 @@ npx shadcn@latest add @grove/async-button
 2. Regenerate registry: `npm run generate:registry`
 3. Test with your local CLI: `the-grove add <component>`
 
+#### Testing Component Installation
+
+Use the test Next.js app to verify components install correctly:
+
+```bash
+cd apps/test-app
+the-grove add async-button  # Installs to test app
+npm run dev                 # See component in action (optional)
+```
+
+The test app is pre-configured with:
+- Next.js 15 + TypeScript + Tailwind
+- shadcn theme and `components.json`
+- Path aliases for clean imports
+
+See `apps/test-app/README.md` for more details.
+
 #### Quick Test Script
 
 For rapid testing without linking globally:
