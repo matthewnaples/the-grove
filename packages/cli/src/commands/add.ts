@@ -22,6 +22,11 @@ export async function add(components: string[], options: AddOptions) {
   }
 
   const spinner = ora();
+  const results = {
+    succeeded: [] as string[],
+    failed: [] as string[],
+    skipped: [] as string[],
+  };
 
   try {
     // Detect project stack
@@ -35,6 +40,7 @@ export async function add(components: string[], options: AddOptions) {
 
       if (!registryUrl) {
         spinner.fail(`Component '${componentName}' not found`);
+        results.failed.push(componentName);
         continue;
       }
 
@@ -55,6 +61,7 @@ export async function add(components: string[], options: AddOptions) {
 
         if (!shouldContinue) {
           console.log(chalk.gray(`Skipped ${componentName}`));
+          results.skipped.push(componentName);
           continue;
         }
         spinner.start(`Adding ${componentName}...`);
@@ -79,13 +86,30 @@ export async function add(components: string[], options: AddOptions) {
       try {
         await execa('npx', args, { stdio: 'inherit' });
         console.log(chalk.green(`✓ Added ${componentName}`));
+        results.succeeded.push(componentName);
       } catch (error) {
         console.log(chalk.red(`✗ Failed to add ${componentName}`));
-        throw error;
+        results.failed.push(componentName);
+        // Continue with other components instead of throwing
       }
     }
 
-    console.log(chalk.green('\n✅ All components added successfully!'));
+    // Show final summary
+    console.log('');
+    if (results.succeeded.length > 0) {
+      console.log(chalk.green(`✅ Successfully added ${results.succeeded.length} component(s)`));
+    }
+    if (results.failed.length > 0) {
+      console.log(chalk.red(`✗ Failed to add ${results.failed.length} component(s): ${results.failed.join(', ')}`));
+    }
+    if (results.skipped.length > 0) {
+      console.log(chalk.gray(`⊝ Skipped ${results.skipped.length} component(s): ${results.skipped.join(', ')}`));
+    }
+
+    // Exit with error code if nothing succeeded
+    if (results.succeeded.length === 0 && (results.failed.length > 0 || results.skipped.length > 0)) {
+      process.exit(1);
+    }
   } catch (error) {
     spinner.stop();
     console.error(chalk.red('\n✗ Failed to add component'));
