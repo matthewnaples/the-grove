@@ -46,7 +46,9 @@ async function fetchCategoryComponents(category: string) {
   const indexUrl = `${REGISTRY_BASE_URL}/${category}/index.json`;
 
   try {
-    const response = await fetch(indexUrl);
+    const response = await fetch(indexUrl, {
+      cache: 'no-store',
+    });
     if (!response.ok) return [];
     return await response.json();
   } catch {

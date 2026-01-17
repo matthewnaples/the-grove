@@ -11,6 +11,20 @@
 
 ---
 
+## Prerequisites
+
+The Grove components extend [shadcn/ui](https://ui.shadcn.com) components. You need to initialize shadcn in your project first:
+
+```bash
+npx shadcn@latest init
+```
+
+This sets up:
+- Tailwind CSS configuration
+- Global styles and CSS variables
+- Path aliases for clean imports
+- Base components (button, card, etc.)
+
 ## Quick Start
 
 Install components:
@@ -21,6 +35,11 @@ npx the-grove add async-button
 List available components:
 ```bash
 npx the-grove list
+```
+
+**Note:** If a component depends on a shadcn component you don't have (like `button`), install it separately:
+```bash
+npx shadcn@latest add button
 ```
 
 ## Installation Methods
