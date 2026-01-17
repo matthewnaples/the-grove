@@ -13,11 +13,6 @@
       "path": "components/ui/async-button.tsx",
       "content": "'use client';\n\nimport { useState } from 'react';\nimport { cn } from '@/lib/utils';\n\nexport interface AsyncButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  onClick?: () => Promise<void> | void;\n}\n\nexport function AsyncButton({\n  onClick,\n  children,\n  disabled,\n  className,\n  ...props\n}: AsyncButtonProps) {\n  const [loading, setLoading] = useState(false);\n\n  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {\n    if (!onClick) return;\n\n    setLoading(true);\n    try {\n      await onClick();\n    } catch (error) {\n      console.error('AsyncButton error:', error);\n    } finally {\n      setLoading(false);\n    }\n  };\n\n  return (\n    <button\n      onClick={handleClick}\n      disabled={disabled || loading}\n      className={cn(\n        \"inline-flex items-center justify-center rounded-md px-4 py-2\",\n        \"bg-primary text-primary-foreground hover:bg-primary/90\",\n        \"disabled:opacity-50 disabled:cursor-not-allowed\",\n        className\n      )}\n      {...props}\n    >\n      {loading && (\n        <svg\n          className=\"animate-spin -ml-1 mr-2 h-4 w-4\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          fill=\"none\"\n          viewBox=\"0 0 24 24\"\n        >\n          <circle\n            className=\"opacity-25\"\n            cx=\"12\"\n            cy=\"12\"\n            r=\"10\"\n            stroke=\"currentColor\"\n            strokeWidth=\"4\"\n          />\n          <path\n            className=\"opacity-75\"\n            fill=\"currentColor\"\n            d=\"M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z\"\n          />\n        </svg>\n      )}\n      {children}\n    </button>\n  );\n}\n",
       "type": "registry:ui"
-    },
-    {
-      "path": "lib/utils.ts",
-      "content": "import { type ClassValue, clsx } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
-      "type": "registry:ui"
     }
   ]
 }

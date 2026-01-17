@@ -42,9 +42,6 @@ async function generateRegistry() {
 
     const { registryDeps, npmDeps } = extractImports(content);
 
-    // Check if component uses cn utility
-    const usesCn = content.includes('from \'@/lib/utils\'') || content.includes('from "@/lib/utils"');
-
     const files: RegistryFile[] = [
       {
         path: `components/ui/${componentName}.tsx`,
@@ -52,17 +49,6 @@ async function generateRegistry() {
         type: 'registry:ui',
       },
     ];
-
-    // Add utils.ts if component uses cn
-    if (usesCn) {
-      const utilsPath = path.join(COMPONENTS_DIR, 'lib/utils.ts');
-      const utilsContent = await fs.readFile(utilsPath, 'utf-8');
-      files.push({
-        path: 'lib/utils.ts',
-        content: utilsContent,
-        type: 'registry:ui',
-      });
-    }
 
     const registryEntry: RegistryEntry = {
       $schema: 'https://ui.shadcn.com/schema/registry-item.json',
