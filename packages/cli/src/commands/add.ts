@@ -60,7 +60,8 @@ export async function add(components: string[], options: AddOptions) {
       }
 
       // Use shadcn CLI to install
-      spinner.text = `Installing ${componentName} via shadcn...`;
+      spinner.stop();
+      console.log(chalk.gray(`Installing ${componentName} via shadcn...\n`));
 
       const args = ['shadcn@latest', 'add', registryUrl];
 
@@ -71,15 +72,22 @@ export async function add(components: string[], options: AddOptions) {
         args.push('--path', options.path);
       }
 
-      await execa('npx', args, { stdio: 'inherit' });
-
-      spinner.succeed(`Added ${componentName}`);
+      try {
+        await execa('npx', args, { stdio: 'inherit' });
+        console.log(chalk.green(`✓ Added ${componentName}`));
+      } catch (error) {
+        console.log(chalk.red(`✗ Failed to add ${componentName}`));
+        throw error;
+      }
     }
 
     console.log(chalk.green('\n✅ All components added successfully!'));
   } catch (error) {
-    spinner.fail('Failed to add component');
-    console.error(chalk.red(error instanceof Error ? error.message : 'Unknown error'));
+    spinner.stop();
+    console.error(chalk.red('\n✗ Failed to add component'));
+    if (error instanceof Error && error.message) {
+      console.error(chalk.red(error.message));
+    }
     process.exit(1);
   }
 }
