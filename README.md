@@ -67,14 +67,14 @@ npx shadcn@latest add https://raw.githubusercontent.com/matthewnaples/the-grove/
 
 **Note:** You'll need to know the component's category (core, convex, clerk, convex-clerk).
 
-### Method 3: Via components.json (Future)
+### Method 3: Via components.json
 
-Coming soon: Add the-grove as a registry in your `components.json`:
+Add the-grove as a registry in your `components.json`:
 
 ```json
 {
   "registries": {
-    "@grove": "https://raw.githubusercontent.com/matthewnaples/the-grove/main/packages/registry/registry"
+    "@grove": "https://raw.githubusercontent.com/matthewnaples/the-grove/main/packages/registry/registry/core/{name}.json"
   }
 }
 ```
@@ -83,6 +83,8 @@ Then install with:
 ```bash
 npx shadcn@latest add @grove/async-button
 ```
+
+**Note:** Currently supports core components. For other categories (convex, clerk), use Method 1 or 2.
 
 ## Packages
 
