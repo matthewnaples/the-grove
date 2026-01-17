@@ -22,6 +22,14 @@ function toTitleCase(str: string): string {
 async function generateRegistry() {
   console.log('🔨 Generating registry...\n');
 
+  // Track components by category for index generation
+  const componentsByCategory: Record<string, any[]> = {
+    core: [],
+    convex: [],
+    clerk: [],
+    'convex-clerk': [],
+  };
+
   // Find all component files
   const componentFiles = await glob('**/*.tsx', {
     cwd: COMPONENTS_DIR,
@@ -68,6 +76,25 @@ async function generateRegistry() {
     await fs.writeJson(outputPath, registryEntry, { spaces: 2 });
 
     console.log(`✓ Generated registry/${category}/${componentName}.json`);
+
+    // Add to category index (without file content to keep index small)
+    componentsByCategory[category].push({
+      name: componentName,
+      title: toTitleCase(componentName),
+      description: registryEntry.description,
+      tags: registryEntry.tags,
+      dependencies: registryEntry.dependencies,
+      registryDependencies: registryEntry.registryDependencies,
+    });
+  }
+
+  // Generate index.json for each category
+  console.log('');
+  for (const [category, components] of Object.entries(componentsByCategory)) {
+    const indexPath = path.join(REGISTRY_DIR, category, 'index.json');
+    await fs.ensureDir(path.dirname(indexPath));
+    await fs.writeJson(indexPath, components, { spaces: 2 });
+    console.log(`✓ Generated registry/${category}/index.json (${components.length} components)`);
   }
 
   console.log('\n✅ Registry generation complete!');
