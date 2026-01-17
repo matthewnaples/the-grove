@@ -1,12 +1,14 @@
 {
   "name": "@the-grove/cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "CLI for the-grove component library",
   "bin": {
     "the-grove": "./dist/index.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
@@ -28,5 +30,11 @@
     "tsup": "^8.0.0",
     "typescript": "^5.0.0"
   },
-  "keywords": ["the-grove", "components", "cli", "nextjs", "react"]
+  "keywords": [
+    "the-grove",
+    "components",
+    "cli",
+    "nextjs",
+    "react"
+  ]
 }

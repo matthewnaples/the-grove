@@ -1,17 +1,25 @@
 {
   "name": "the-grove",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CLI for the-grove component library (wrapper package)",
   "main": "index.js",
   "bin": {
     "the-grove": "./index.js"
   },
-  "files": ["index.js"],
+  "files": [
+    "index.js"
+  ],
   "scripts": {},
   "dependencies": {
     "@the-grove/cli": "^0.1.0"
   },
-  "keywords": ["the-grove", "components", "cli", "nextjs", "react"],
+  "keywords": [
+    "the-grove",
+    "components",
+    "cli",
+    "nextjs",
+    "react"
+  ],
   "author": "",
   "license": "MIT"
 }
