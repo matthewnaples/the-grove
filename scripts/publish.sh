@@ -19,6 +19,8 @@ fi
 # Check if NPM_TOKEN is set, otherwise ask for OTP
 if [[ -n "$NPM_TOKEN" ]]; then
   echo "✅ Using NPM_TOKEN from environment"
+  # Configure npm to use the token
+  echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
   PUBLISH_CMD="npm publish --access public"
 else
   read -p "Enter your npm 2FA code: " OTP
@@ -30,9 +32,9 @@ else
 fi
 
 echo ""
-echo "📦 Building all packages..."
+echo "📦 Building packages for publishing..."
 cd "$(dirname "$0")/.."
-npm run build
+npx turbo run build --filter="./packages/*"
 
 echo ""
 echo "📝 Generating registry..."

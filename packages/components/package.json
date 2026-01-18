@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist", "src"],
+  "files": [
+    "dist",
+    "src"
+  ],
   "sideEffects": false,
   "exports": {
     ".": {
@@ -20,6 +23,7 @@
     "dev": "tsc --watch"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.2.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "tailwind-merge": "^2.0.0"

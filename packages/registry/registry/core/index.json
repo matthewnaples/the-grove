@@ -1,5 +1,13 @@
 [
   {
+    "name": "loading-spinner",
+    "title": "Loading Spinner",
+    "description": "",
+    "tags": [],
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
     "name": "async-button",
     "title": "Async Button",
     "description": "",
@@ -12,11 +20,14 @@
     ]
   },
   {
-    "name": "loading-spinner",
-    "title": "Loading Spinner",
+    "name": "button",
+    "title": "Button",
     "description": "",
     "tags": [],
-    "dependencies": [],
+    "dependencies": [
+      "@radix-ui/react-slot",
+      "class-variance-authority"
+    ],
     "registryDependencies": []
   }
 ]
