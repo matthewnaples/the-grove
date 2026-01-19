@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 
-const REGISTRY_BASE_URL = 'https://raw.githubusercontent.com/matthewnaples/the-grove/main/packages/registry/registry';
+const REGISTRY_BASE_URL = 'https://raw.githubusercontent.com/matthewnaples/the-grove/main/packages/registry/public/r';
 
 interface ListOptions {
   category?: string;

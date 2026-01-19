@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "the-grove",
+  "homepage": "https://github.com/matthewnaples/the-grove",
+  "items": [
+    {
+      "name": "async-button",
+      "type": "registry:ui",
+      "title": "Async Button",
+      "description": "Button component with built-in async state handling for Promise-based onClick handlers",
+      "category": "core",
+      "tags": ["button", "async", "loading"],
+      "registryDependencies": ["button"],
+      "dependencies": ["lucide-react"],
+      "files": [
+        {
+          "path": "src/core/async-button/async-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "loading-spinner",
+      "type": "registry:ui",
+      "title": "Loading Spinner",
+      "description": "Accessible loading spinner component with size variants",
+      "category": "core",
+      "tags": ["loading", "spinner", "loader"],
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "src/core/loading-spinner/loading-spinner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}

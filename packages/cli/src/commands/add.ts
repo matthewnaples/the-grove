@@ -5,7 +5,7 @@ import prompts from 'prompts';
 import fs from 'fs-extra';
 import path from 'path';
 
-const REGISTRY_BASE_URL = 'https://raw.githubusercontent.com/matthewnaples/the-grove/main/packages/registry/registry';
+const REGISTRY_BASE_URL = 'https://raw.githubusercontent.com/matthewnaples/the-grove/main/packages/registry/public/r';
 
 interface AddOptions {
   path?: string;

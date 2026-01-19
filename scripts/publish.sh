@@ -37,8 +37,19 @@ cd "$(dirname "$0")/.."
 npx turbo run build --filter="./packages/*"
 
 echo ""
-echo "📝 Generating registry..."
+echo "📝 Building registry (public/r/)..."
 npm run generate:registry
+
+echo ""
+echo "🔍 Verifying registry build..."
+if [ ! -d "packages/registry/public/r/core" ]; then
+  echo "❌ Registry build failed - public/r/ directory not found"
+  exit 1
+fi
+
+# Count component files (excluding index.json)
+COMPONENT_COUNT=$(find packages/registry/public/r/core -name "*.json" -not -name "index.json" | wc -l | tr -d ' ')
+echo "✅ Registry verified: $COMPONENT_COUNT components built"
 
 echo ""
 echo "🔄 Bumping versions..."

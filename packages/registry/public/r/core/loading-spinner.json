@@ -4,13 +4,17 @@
   "type": "registry:ui",
   "title": "Loading Spinner",
   "category": "core",
-  "description": "",
-  "tags": [],
+  "description": "Accessible loading spinner component with size variants",
+  "tags": [
+    "loading",
+    "spinner",
+    "loader"
+  ],
   "registryDependencies": [],
   "dependencies": [],
   "files": [
     {
-      "path": "components/ui/loading-spinner.tsx",
+      "path": "src/core/loading-spinner/loading-spinner.tsx",
       "content": "'use client';\n\nimport { cn } from '@/lib/utils';\n\nexport interface LoadingSpinnerProps extends React.HTMLAttributes<HTMLDivElement> {\n  size?: 'sm' | 'md' | 'lg';\n}\n\nconst sizeClasses = {\n  sm: 'h-4 w-4 border-2',\n  md: 'h-8 w-8 border-2',\n  lg: 'h-12 w-12 border-4',\n};\n\nexport function LoadingSpinner({\n  size = 'md',\n  className,\n  ...props\n}: LoadingSpinnerProps) {\n  return (\n    <div\n      role=\"status\"\n      aria-label=\"Loading\"\n      className={cn('inline-block', className)}\n      {...props}\n    >\n      <div\n        className={cn(\n          'animate-spin rounded-full border-solid border-primary border-t-transparent',\n          sizeClasses[size]\n        )}\n      />\n      <span className=\"sr-only\">Loading...</span>\n    </div>\n  );\n}\n",
       "type": "registry:ui"
     }

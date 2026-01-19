@@ -1,0 +1,55 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "the-grove",
+  "homepage": "https://github.com/matthewnaples/the-grove",
+  "items": [
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "async-button",
+      "type": "registry:ui",
+      "title": "Async Button",
+      "category": "core",
+      "description": "Button component with built-in async state handling for Promise-based onClick handlers",
+      "tags": [
+        "button",
+        "async",
+        "loading"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "src/core/async-button/async-button.tsx",
+          "content": "'use client';\n\nimport { useState } from 'react';\nimport { Button, ButtonProps } from '@/components/ui/button';\nimport { Loader2 } from 'lucide-react';\n\nexport interface AsyncButtonProps extends Omit<ButtonProps, 'onClick'> {\n  onClick?: () => Promise<void> | void;\n}\n\nexport function AsyncButton({\n  onClick,\n  children,\n  disabled,\n  variant,\n  size,\n  ...props\n}: AsyncButtonProps) {\n  const [loading, setLoading] = useState(false);\n\n  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {\n    if (!onClick) return;\n\n    setLoading(true);\n    try {\n      await onClick();\n    } catch (error) {\n      console.error('AsyncButton error:', error);\n    } finally {\n      setLoading(false);\n    }\n  };\n\n  return (\n    <Button\n      onClick={handleClick}\n      disabled={disabled || loading}\n      variant={variant}\n      size={size}\n      {...props}\n    >\n      {loading && <Loader2 className=\"mr-2 h-4 w-4 animate-spin\" />}\n      {children}\n    </Button>\n  );\n}\n",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "loading-spinner",
+      "type": "registry:ui",
+      "title": "Loading Spinner",
+      "category": "core",
+      "description": "Accessible loading spinner component with size variants",
+      "tags": [
+        "loading",
+        "spinner",
+        "loader"
+      ],
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "src/core/loading-spinner/loading-spinner.tsx",
+          "content": "'use client';\n\nimport { cn } from '@/lib/utils';\n\nexport interface LoadingSpinnerProps extends React.HTMLAttributes<HTMLDivElement> {\n  size?: 'sm' | 'md' | 'lg';\n}\n\nconst sizeClasses = {\n  sm: 'h-4 w-4 border-2',\n  md: 'h-8 w-8 border-2',\n  lg: 'h-12 w-12 border-4',\n};\n\nexport function LoadingSpinner({\n  size = 'md',\n  className,\n  ...props\n}: LoadingSpinnerProps) {\n  return (\n    <div\n      role=\"status\"\n      aria-label=\"Loading\"\n      className={cn('inline-block', className)}\n      {...props}\n    >\n      <div\n        className={cn(\n          'animate-spin rounded-full border-solid border-primary border-t-transparent',\n          sizeClasses[size]\n        )}\n      />\n      <span className=\"sr-only\">Loading...</span>\n    </div>\n  );\n}\n",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}

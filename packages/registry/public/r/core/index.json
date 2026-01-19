@@ -1,0 +1,30 @@
+[
+  {
+    "name": "async-button",
+    "title": "Async Button",
+    "description": "Button component with built-in async state handling for Promise-based onClick handlers",
+    "tags": [
+      "button",
+      "async",
+      "loading"
+    ],
+    "dependencies": [
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "button"
+    ]
+  },
+  {
+    "name": "loading-spinner",
+    "title": "Loading Spinner",
+    "description": "Accessible loading spinner component with size variants",
+    "tags": [
+      "loading",
+      "spinner",
+      "loader"
+    ],
+    "dependencies": [],
+    "registryDependencies": []
+  }
+]

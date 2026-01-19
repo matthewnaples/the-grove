@@ -4,8 +4,12 @@
   "type": "registry:ui",
   "title": "Async Button",
   "category": "core",
-  "description": "",
-  "tags": [],
+  "description": "Button component with built-in async state handling for Promise-based onClick handlers",
+  "tags": [
+    "button",
+    "async",
+    "loading"
+  ],
   "registryDependencies": [
     "button"
   ],
@@ -14,7 +18,7 @@
   ],
   "files": [
     {
-      "path": "components/ui/async-button.tsx",
+      "path": "src/core/async-button/async-button.tsx",
       "content": "'use client';\n\nimport { useState } from 'react';\nimport { Button, ButtonProps } from '@/components/ui/button';\nimport { Loader2 } from 'lucide-react';\n\nexport interface AsyncButtonProps extends Omit<ButtonProps, 'onClick'> {\n  onClick?: () => Promise<void> | void;\n}\n\nexport function AsyncButton({\n  onClick,\n  children,\n  disabled,\n  variant,\n  size,\n  ...props\n}: AsyncButtonProps) {\n  const [loading, setLoading] = useState(false);\n\n  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {\n    if (!onClick) return;\n\n    setLoading(true);\n    try {\n      await onClick();\n    } catch (error) {\n      console.error('AsyncButton error:', error);\n    } finally {\n      setLoading(false);\n    }\n  };\n\n  return (\n    <Button\n      onClick={handleClick}\n      disabled={disabled || loading}\n      variant={variant}\n      size={size}\n      {...props}\n    >\n      {loading && <Loader2 className=\"mr-2 h-4 w-4 animate-spin\" />}\n      {children}\n    </Button>\n  );\n}\n",
       "type": "registry:ui"
     }
