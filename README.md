@@ -232,3 +232,11 @@ npm publish --access public
 ## License
 
 MIT
+
+
+
+# To Do
+ - [ ] The contribute command could be added. for single ui components here is what i had to do to contribute:
+   1. drop the component (async-select) into packages/registry/registry/the-grove/async-select/async-select.tsx
+   2. add the shadcn dependencies of async-select (from packages/registry... npx shadcn@latest select).
+   3. update the import from "@components/..." to "@/registry/the-grove/..."
