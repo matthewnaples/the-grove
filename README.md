@@ -89,8 +89,7 @@ npx shadcn@latest add @grove/async-button
 ## Packages
 
 - `@the-grove/cli` - CLI tool (published to npm)
-- `@the-grove/components` - Component library (published to npm)
-- `@the-grove/registry` - Registry generator (internal)
+- `@the-grove/registry` - Registry generator and component source (internal)
 - `@the-grove/playground` - Development playground (internal)
 
 ## Local Development
@@ -140,9 +139,10 @@ npx shadcn@latest add @grove/async-button
 
 #### Making Registry Changes
 
-1. Edit components in `packages/components/src/`
-2. Regenerate registry: `npm run generate:registry`
-3. Test with your local CLI: `the-grove add <component>`
+1. Edit components in `packages/registry/registry/the-grove/`
+2. Update `packages/registry/registry.json` with component metadata
+3. Regenerate registry: `npm run generate:registry`
+4. Test with your local CLI: `the-grove add <component>`
 
 #### Testing Component Installation
 

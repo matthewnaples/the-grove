@@ -139,8 +139,8 @@ export async function contribute(filePaths: string[]) {
 }
 
 function mapLocalPathToTemplate(localPath: string): string {
-  // components/ui/button.tsx -> packages/components/src/core/button/index.tsx
-  // components/fancy-table.tsx -> packages/components/src/core/fancy-table/index.tsx
+  // components/ui/button.tsx -> packages/registry/registry/the-grove/button/button.tsx
+  // components/fancy-table.tsx -> packages/registry/registry/the-grove/fancy-table/fancy-table.tsx
 
   const normalized = localPath
     .replace(/^\.\//, '')
@@ -149,8 +149,8 @@ function mapLocalPathToTemplate(localPath: string): string {
 
   const name = path.basename(normalized, path.extname(normalized));
 
-  // Default to core category (can be enhanced to detect category)
-  return `packages/components/src/core/${name}/index.tsx`;
+  // Maps to registry structure (category is defined in registry.json)
+  return `packages/registry/registry/the-grove/${name}/${name}.tsx`;
 }
 
 async function promptForToken(): Promise<string> {
