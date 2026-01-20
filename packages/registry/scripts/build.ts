@@ -9,6 +9,7 @@ const __dirname = dirname(__filename);
 
 const REGISTRY_ROOT = path.resolve(__dirname, '..');
 const REGISTRY_JSON_PATH = path.join(REGISTRY_ROOT, 'registry.json');
+const SRC_DIR = path.join(REGISTRY_ROOT, 'registry/the-grove');
 const OUTPUT_DIR = path.join(REGISTRY_ROOT, 'public/r');
 
 async function buildRegistry() {

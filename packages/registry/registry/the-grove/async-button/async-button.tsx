@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Button, ButtonProps } from '@/components/ui/button';
+import { Button, ButtonProps } from '@/registry/the-grove/ui/button';
 import { Loader2 } from 'lucide-react';
 
 export interface AsyncButtonProps extends Omit<ButtonProps, 'onClick'> {

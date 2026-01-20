@@ -12,6 +12,5 @@
       "type": "registry:ui"
     }
   ],
-  "type": "registry:ui",
-  "category": "core"
+  "type": "registry:ui"
 }
