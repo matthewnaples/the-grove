@@ -314,7 +314,7 @@ The `components.json` file configures the shadcn CLI:
 
 ```json
 {
-  "style": "new-york",
+  "style": "new-york-v4",
   "aliases": {
     "ui": "@/registry/the-grove/ui"
   }
