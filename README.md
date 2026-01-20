@@ -240,3 +240,6 @@ MIT
    1. drop the component (async-select) into packages/registry/registry/the-grove/async-select/async-select.tsx
    2. add the shadcn dependencies of async-select (from packages/registry... npx shadcn@latest select).
    3. update the import from "@components/..." to "@/registry/the-grove/..."
+   3.5 (maybe) - add component to docs
+   4. push changes
+   5. publish npm
